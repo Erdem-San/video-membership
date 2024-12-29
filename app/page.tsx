@@ -1,29 +1,52 @@
-import Link from 'next/link'
-import { Button } from "@/components/ui/button"
-import Layout from '@/components/Layout'
+'use client'
+
+import { useEffect, useState } from 'react'
+import { getCurrentUser } from '@/lib/auth'
+import AuthForm from '@/components/auth/AuthForm'
+import UploadVideo from '@/components/video/UploadVideo'
 
 export default function Home() {
-  return (
-    <Layout>
-      <div className="flex flex-col items-center justify-center min-h-screen py-2">
-        <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
-          <h1 className="text-6xl font-bold">
-            Welcome to <span className="text-blue-600">MembershipSite</span>
-          </h1>
-          <p className="mt-3 text-2xl">
-            Get started by exploring our features
-          </p>
-          <div className="flex mt-6 space-x-4">
-            <Button asChild>
-              <Link href="/auth">Sign Up / Login</Link>
-            </Button>
-            <Button asChild variant="outline">
-              <Link href="/feed">Explore Feed</Link>
-            </Button>
-          </div>
-        </main>
+  const [user, setUser] = useState<any>(null)
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const checkUser = async () => {
+      try {
+        const { user } = await getCurrentUser()
+        setUser(user)
+      } catch (error) {
+        console.error('Kullanıcı kontrolü hatası:', error)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    checkUser()
+  }, [])
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="text-lg">Yükleniyor...</div>
       </div>
-    </Layout>
+    )
+  }
+
+  return (
+    <main className="min-h-screen bg-gray-100">
+      <div className="container mx-auto py-10">
+        <h1 className="text-4xl font-bold text-center mb-10">
+          Video Membership Platformu
+        </h1>
+        {!user ? (
+          <AuthForm />
+        ) : (
+          <div>
+            <UploadVideo />
+          </div>
+        )}
+      </div>
+    </main>
   )
 }
 
