@@ -1,36 +1,108 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Membership Site with React and Supabase
 
-## Getting Started
+Overview
 
-First, run the development server:
+This project is a membership-based platform where users can:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Register and log in to their accounts.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Upload videos to their profiles.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Interact with each other through likes, comments, and shares.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Communicate via a direct messaging system.
 
-## Learn More
+Access the platform on both iOS and Android devices through dedicated mobile apps.
 
-To learn more about Next.js, take a look at the following resources:
+Tech Stack
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Frontend:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+React: For building the user interface.
 
-## Deploy on Vercel
+Tailwind CSS: For styling components.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+React Router: For handling client-side routing.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Backend:
+
+Supabase: A backend-as-a-service platform for authentication, database, and storage.
+
+Mobile App:
+
+React Native: For building iOS and Android apps.
+
+Others:
+
+Vite: For fast development builds.
+
+Axios: For handling API requests.
+
+Zustand or Context API: For state management.
+
+Firebase Cloud Messaging (FCM): For push notifications (optional for mobile apps).
+
+Testing Library: For testing React components.
+
+Features
+
+User Registration and Authentication:
+
+Users can sign up, log in, and log out.
+
+Supabase handles authentication with email and password or third-party providers (Google, GitHub, etc.).
+
+Video Upload:
+
+Registered users can upload videos directly to their profiles.
+
+Videos are stored in Supabase Storage, and metadata is saved in the Supabase database.
+
+Direct Messaging System:
+
+Users can send and receive private messages.
+
+Messages are stored in the Supabase database.
+
+Social Interaction Features:
+
+Users can like, share, and comment on videos.
+
+Real-time updates using Supabase subscriptions.
+
+Mobile App Development:
+
+React Native apps for iOS and Android.
+
+Use Expo
+
+Synchronization with the web platform via Supabase APIs.
+
+Prerequisites
+
+Node.js and npm installed.
+
+Supabase account.
+
+Android Studio/Xcode for mobile app development.
+
+Setup Instructions
+
+Backend (Supabase):
+
+Create a new project on Supabase.
+
+Set up the following tables:
+
+Users: For storing user details.
+
+Videos: For storing video metadata.
+
+Messages: For private messages between users.
+
+Interactions: For likes, comments, and shares.
+
+Enable storage for video uploads.
+
+Set up authentication providers as needed.
+
